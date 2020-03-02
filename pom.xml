@@ -68,7 +68,7 @@ along with ao-web-resources-servlet.  If not, see <http://www.gnu.org/licenses /
 								<!-- Java EE -->
 								<link>${javac.link.javaeeApi.6}</link>
 								<!-- Direct -->
-								<!-- TODO -->
+								<link>https://aoindustries.com/ao-web-resources/registry/apidocs/</link>
 							</links>
 						</configuration>
 					</plugin>
@@ -86,9 +86,19 @@ along with ao-web-resources-servlet.  If not, see <http://www.gnu.org/licenses /
 				<scope>import</scope>
 			</dependency>
 			<!-- Direct -->
-			<!-- TODO -->
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-web-resources-registry</artifactId><version>0.1.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
 			<!-- Transitive -->
-			<!-- TODO -->
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId><version>3.4.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles</artifactId><version>1.0.1${POST-SNAPSHOT}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId><version>4.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -99,6 +109,8 @@ along with ao-web-resources-servlet.  If not, see <http://www.gnu.org/licenses /
 			<scope>provided</scope>
 		</dependency>
 		<!-- Direct -->
-		<!-- TODO -->
+		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-web-resources-registry</artifactId>
+		</dependency>
 	</dependencies>
 </project>
