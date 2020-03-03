@@ -61,7 +61,10 @@ public class RegistryEE {
 
 		@Override
 		public void requestInitialized(ServletRequestEvent event) {
-			get(event.getServletRequest());
+			get(
+				event.getServletContext(),
+				event.getServletRequest()
+			);
 		}
 
 		@Override
@@ -94,11 +97,14 @@ public class RegistryEE {
 
 	/**
 	 * Gets the {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
+	 * <p>
+	 * This defaults to a copy of {@link #get(javax.servlet.ServletContext)}.
+	 * </p>
 	 */
-	public static Registry get(ServletRequest request) {
+	public static Registry get(ServletContext servletContext, ServletRequest request) {
 		Registry registry = (Registry)request.getAttribute(ATTRIBUTE);
 		if(registry == null) {
-			registry = new Registry();
+			registry = get(servletContext).copy();
 			request.setAttribute(ATTRIBUTE, registry);
 		}
 		return registry;
