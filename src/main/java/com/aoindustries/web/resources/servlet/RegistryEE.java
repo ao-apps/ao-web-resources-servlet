@@ -112,6 +112,13 @@ public class RegistryEE {
 
 	/**
 	 * Gets the {@linkplain Registry web resource registry} for the given {@linkplain HttpSession session}.
+	 * <p>
+	 * Note: With the current implementation, the session registry may add to the request registry, but cannot remove from it
+	 * or suppress anything in it.
+	 * </p>
+	 * <p>
+	 * TODO: Is the session registry meaningful?  The idea is that it could be used for per-person theme selection via sessions.
+	 * </p>
 	 */
 	public static Registry get(HttpSession session) {
 		Registry registry = (Registry)session.getAttribute(ATTRIBUTE);
