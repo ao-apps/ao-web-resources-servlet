@@ -35,7 +35,7 @@ along with ao-web-resources-servlet.  If not, see <http://www.gnu.org/licenses /
 		shortTitle="@{documented.shortTitle}"
 		description="@{documented.description}"
 		datePublished="2020-03-01T10:52:15-0600"
-		dateModified="2020-03-02T02:22:16-0600"
+		dateModified="2020-03-03T00:44:50-0600"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -87,6 +87,10 @@ AO Taglib: allow queuing of all scripts until end of page
 					Or, would this require full buffering to put them all in the head?
 					With our aggressive one-year cache of CSS files (and other static resources)
 					enabled by ao-servlet-last-modified, maybe this is really a non-issue.
+				</li>
+				<li>
+					Should there be a group registry on the current request / session?
+					It would let request processing activate groups based on what is actually needed by the page.
 				</li>
 			</ul>
 		</section:section>
