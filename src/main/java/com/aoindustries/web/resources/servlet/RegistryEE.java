@@ -35,7 +35,7 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 /**
- * Provides {@link Registry web resource registries} for {@link ServletContext},
+ * Provides {@linkplain Registry web resource registries} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
 public class RegistryEE {
@@ -81,7 +81,7 @@ public class RegistryEE {
 	}
 
 	/**
-	 * Gets the {@link Registry web resource registry} for the given {@link ServletContext servlet context}.
+	 * Gets the {@linkplain Registry web resource registry} for the given {@linkplain ServletContext servlet context}.
 	 */
 	public static Registry get(ServletContext servletContext) {
 		Registry registry = (Registry)servletContext.getAttribute(ATTRIBUTE);
@@ -93,7 +93,7 @@ public class RegistryEE {
 	}
 
 	/**
-	 * Gets the {@link Registry web resource registry} for the given {@link ServletRequest servlet request}.
+	 * Gets the {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
 	 */
 	public static Registry get(ServletRequest request) {
 		Registry registry = (Registry)request.getAttribute(ATTRIBUTE);
@@ -105,7 +105,7 @@ public class RegistryEE {
 	}
 
 	/**
-	 * Gets the {@link Registry web resource registry} for the given {@link HttpSession session}.
+	 * Gets the {@linkplain Registry web resource registry} for the given {@linkplain HttpSession session}.
 	 */
 	public static Registry get(HttpSession session) {
 		Registry registry = (Registry)session.getAttribute(ATTRIBUTE);
