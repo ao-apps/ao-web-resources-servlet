@@ -40,7 +40,7 @@ import javax.servlet.http.HttpSessionListener;
  */
 public class RegistryEE {
 
-	private static final String ATTRIBUTE = Registry.class.getName();
+	public static final String ATTRIBUTE = Registry.class.getName();
 
 	@WebListener
 	public static class Initializer implements
