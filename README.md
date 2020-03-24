@@ -30,7 +30,7 @@ Web resource management in a Servlet environment.
 * [Project Home](https://aoindustries.com/ao-web-resources/servlet/)
 * [Changelog](https://aoindustries.com/ao-web-resources/servlet/changelog)
 * [API Docs](https://aoindustries.com/ao-web-resources/servlet/apidocs/)
-* [Maven Central Repository](https://search.maven.org/#search%7Cgav%7C1%7Cg:%22com.aoindustries%22%20AND%20a:%22ao-web-resources-servlet%22)
+* [Maven Central Repository](https://search.maven.org/artifact/com.aoindustries/ao-web-resources-servlet)
 * [GitHub](https://github.com/aoindustries/ao-web-resources-servlet)
 
 ## Contact Us
