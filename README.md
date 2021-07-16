@@ -10,6 +10,12 @@
 
 [![Build](https://github.com/aoindustries/ao-web-resources-servlet/workflows/Build/badge.svg?branch=master)](https://github.com/aoindustries/ao-web-resources-servlet/actions?query=workflow%3ABuild)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-web-resources-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-web-resources-servlet)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-web-resources-servlet&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=com.aoapps%3Aao-web-resources-servlet)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-web-resources-servlet&metric=ncloc)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-web-resources-servlet&metric=ncloc)  
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-web-resources-servlet&metric=reliability_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-web-resources-servlet&metric=Reliability)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-web-resources-servlet&metric=security_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-web-resources-servlet&metric=Security)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-web-resources-servlet&metric=sqale_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-web-resources-servlet&metric=Maintainability)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-web-resources-servlet&metric=coverage)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-web-resources-servlet&metric=Coverage)
 
 Web resource management in a Servlet environment.
 
