@@ -22,6 +22,7 @@
  */
 package com.aoapps.web.resources.servlet;
 
+import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.web.resources.registry.Registry;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
@@ -48,18 +49,14 @@ final public class RegistryEE {
 		/**
 		 * The name of the application-scope attribute that contains the current application registry.
 		 */
-		public static final String APPLICATION_ATTRIBUTE = Application.class.getName();
+		public static final ScopeEE.Application.Attribute<Registry> APPLICATION_ATTRIBUTE =
+			ScopeEE.APPLICATION.attribute(Application.class.getName());
 
 		/**
 		 * Gets the application-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletContext servlet context}.
 		 */
 		public static Registry get(ServletContext servletContext) {
-			Registry registry = (Registry)servletContext.getAttribute(APPLICATION_ATTRIBUTE);
-			if(registry == null) {
-				registry = new Registry();
-				servletContext.setAttribute(APPLICATION_ATTRIBUTE, registry);
-			}
-			return registry;
+			return APPLICATION_ATTRIBUTE.context(servletContext).computeIfAbsent(__ -> new Registry());
 		}
 	}
 
@@ -74,7 +71,8 @@ final public class RegistryEE {
 		/**
 		 * The name of the request-scope attribute that contains the current request registry.
 		 */
-		public static final String REQUEST_ATTRIBUTE = Request.class.getName();
+		public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
+			ScopeEE.REQUEST.attribute(Request.class.getName());
 
 		/**
 		 * Gets the request-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
@@ -83,12 +81,7 @@ final public class RegistryEE {
 		 * </p>
 		 */
 		public static Registry get(ServletContext servletContext, ServletRequest request) {
-			Registry registry = (Registry)request.getAttribute(REQUEST_ATTRIBUTE);
-			if(registry == null) {
-				registry = Application.get(servletContext).copy();
-				request.setAttribute(REQUEST_ATTRIBUTE, registry);
-			}
-			return registry;
+			return REQUEST_ATTRIBUTE.context(request).computeIfAbsent(__ -> Application.get(servletContext).copy());
 		}
 	}
 
@@ -104,7 +97,8 @@ final public class RegistryEE {
 		/**
 		 * The name of the session-scope attribute that contains the current session registry.
 		 */
-		public static final String SESSION_ATTRIBUTE = Session.class.getName();
+		public static final ScopeEE.Session.Attribute<Registry> SESSION_ATTRIBUTE =
+			ScopeEE.SESSION.attribute(Session.class.getName());
 
 		/**
 		 * Gets the session-scope {@linkplain Registry web resource registry} for the given {@linkplain HttpSession session}.
@@ -122,12 +116,7 @@ final public class RegistryEE {
 			if(session == null) {
 				return null;
 			} else {
-				Registry registry = (Registry)session.getAttribute(SESSION_ATTRIBUTE);
-				if(registry == null) {
-					registry = new Registry();
-					session.setAttribute(SESSION_ATTRIBUTE, registry);
-				}
-				return registry;
+				return SESSION_ATTRIBUTE.context(session).computeIfAbsent(__ -> new Registry());
 			}
 		}
 	}
@@ -151,7 +140,8 @@ final public class RegistryEE {
 		/**
 		 * The name of the request-scope attribute that contains the current page context.
 		 */
-		public static final String REQUEST_ATTRIBUTE = Page.class.getName();
+		public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
+			ScopeEE.REQUEST.attribute(Page.class.getName());
 
 		/**
 		 * Gets the page-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
@@ -159,14 +149,14 @@ final public class RegistryEE {
 		 * @return  The registry or {@code null} of there is not any current page-scope registry.
 		 */
 		public static Registry get(ServletRequest request) {
-			return (Registry)request.getAttribute(REQUEST_ATTRIBUTE);
+			return REQUEST_ATTRIBUTE.context(request).get();
 		}
 
 		/**
 		 * Sets the page-scope {@linkplain Registry web resource registry} in the given {@linkplain ServletRequest servlet request}.
 		 */
 		public static void set(ServletRequest request, Registry pageRegistry) {
-			request.setAttribute(REQUEST_ATTRIBUTE, pageRegistry);
+			REQUEST_ATTRIBUTE.context(request).set(pageRegistry);
 		}
 	}
 }
