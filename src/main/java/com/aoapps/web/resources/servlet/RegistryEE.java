@@ -33,7 +33,7 @@ import javax.servlet.http.HttpSession;
  * Provides {@linkplain Registry web resource registries} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
-final public class RegistryEE {
+public final class RegistryEE {
 
 	// Make no instances
 	private RegistryEE() {}
@@ -41,7 +41,7 @@ final public class RegistryEE {
 	/**
 	 * The application-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	final public static class Application {
+	public static final class Application {
 
 		// Make no instances
 		private Application() {}
@@ -63,7 +63,7 @@ final public class RegistryEE {
 	/**
 	 * The request-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	final public static class Request {
+	public static final class Request {
 
 		// Make no instances
 		private Request() {}
@@ -89,7 +89,7 @@ final public class RegistryEE {
 	 * The session-scope {@linkplain Registry web resource registries} are only available
 	 * when a session has been created and is active.
 	 */
-	final public static class Session {
+	public static final class Session {
 
 		// Make no instances
 		private Session() {}
@@ -132,7 +132,7 @@ final public class RegistryEE {
 	 * add a page-scope registry via a {@link ServletRequestListener}.
 	 * </p>
 	 */
-	final public static class Page {
+	public static final class Page {
 
 		// Make no instances
 		private Page() {}
