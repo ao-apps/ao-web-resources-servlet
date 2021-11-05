@@ -33,18 +33,18 @@ import javax.servlet.http.HttpSession;
  * Provides {@linkplain Registry web resource registries} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
-public final class RegistryEE {
+public abstract class RegistryEE {
 
-	// Make no instances
-	private RegistryEE() {}
+	/** Make no instances. */
+	private RegistryEE() {throw new AssertionError();}
 
 	/**
 	 * The application-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	public static final class Application {
+	public abstract static class Application {
 
-		// Make no instances
-		private Application() {}
+		/** Make no instances. */
+		private Application() {throw new AssertionError();}
 
 		/**
 		 * The name of the application-scope attribute that contains the current application registry.
@@ -63,10 +63,10 @@ public final class RegistryEE {
 	/**
 	 * The request-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	public static final class Request {
+	public abstract static class Request {
 
-		// Make no instances
-		private Request() {}
+		/** Make no instances. */
+		private Request() {throw new AssertionError();}
 
 		/**
 		 * The name of the request-scope attribute that contains the current request registry.
@@ -89,10 +89,10 @@ public final class RegistryEE {
 	 * The session-scope {@linkplain Registry web resource registries} are only available
 	 * when a session has been created and is active.
 	 */
-	public static final class Session {
+	public abstract static class Session {
 
-		// Make no instances
-		private Session() {}
+		/** Make no instances. */
+		private Session() {throw new AssertionError();}
 
 		/**
 		 * The name of the session-scope attribute that contains the current session registry.
@@ -132,10 +132,10 @@ public final class RegistryEE {
 	 * add a page-scope registry via a {@link ServletRequestListener}.
 	 * </p>
 	 */
-	public static final class Page {
+	public abstract static class Page {
 
-		// Make no instances
-		private Page() {}
+		/** Make no instances. */
+		private Page() {throw new AssertionError();}
 
 		/**
 		 * The name of the request-scope attribute that contains the current page context.
