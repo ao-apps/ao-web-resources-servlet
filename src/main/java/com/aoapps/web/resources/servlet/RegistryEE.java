@@ -1,6 +1,6 @@
 /*
  * ao-web-resources-servlet - Web resource management in a Servlet environment.
- * Copyright (C) 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -33,7 +33,7 @@ import javax.servlet.http.HttpSession;
  * Provides {@linkplain Registry web resource registries} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
-public abstract class RegistryEE {
+public final class RegistryEE {
 
 	/** Make no instances. */
 	private RegistryEE() {throw new AssertionError();}
@@ -41,7 +41,7 @@ public abstract class RegistryEE {
 	/**
 	 * The application-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	public abstract static class Application {
+	public final static class Application {
 
 		/** Make no instances. */
 		private Application() {throw new AssertionError();}
@@ -63,7 +63,7 @@ public abstract class RegistryEE {
 	/**
 	 * The request-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	public abstract static class Request {
+	public final static class Request {
 
 		/** Make no instances. */
 		private Request() {throw new AssertionError();}
@@ -89,7 +89,7 @@ public abstract class RegistryEE {
 	 * The session-scope {@linkplain Registry web resource registries} are only available
 	 * when a session has been created and is active.
 	 */
-	public abstract static class Session {
+	public final static class Session {
 
 		/** Make no instances. */
 		private Session() {throw new AssertionError();}
@@ -132,7 +132,7 @@ public abstract class RegistryEE {
 	 * add a page-scope registry via a {@link ServletRequestListener}.
 	 * </p>
 	 */
-	public abstract static class Page {
+	public final static class Page {
 
 		/** Make no instances. */
 		private Page() {throw new AssertionError();}
