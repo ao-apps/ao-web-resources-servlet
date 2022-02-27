@@ -41,7 +41,7 @@ public final class RegistryEE {
 	/**
 	 * The application-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	public final static class Application {
+	public static final class Application {
 
 		/** Make no instances. */
 		private Application() {throw new AssertionError();}
@@ -63,7 +63,7 @@ public final class RegistryEE {
 	/**
 	 * The request-scope {@linkplain Registry web resource registries} are always available.
 	 */
-	public final static class Request {
+	public static final class Request {
 
 		/** Make no instances. */
 		private Request() {throw new AssertionError();}
@@ -89,7 +89,7 @@ public final class RegistryEE {
 	 * The session-scope {@linkplain Registry web resource registries} are only available
 	 * when a session has been created and is active.
 	 */
-	public final static class Session {
+	public static final class Session {
 
 		/** Make no instances. */
 		private Session() {throw new AssertionError();}
@@ -132,7 +132,7 @@ public final class RegistryEE {
 	 * add a page-scope registry via a {@link ServletRequestListener}.
 	 * </p>
 	 */
-	public final static class Page {
+	public static final class Page {
 
 		/** Make no instances. */
 		private Page() {throw new AssertionError();}
