@@ -33,41 +33,41 @@ import javax.servlet.http.HttpSessionListener;
 
 @WebListener
 public class Initializer implements
-	ServletContextListener,
-	ServletRequestListener,
-	HttpSessionListener
+  ServletContextListener,
+  ServletRequestListener,
+  HttpSessionListener
 {
 
-	@Override
-	public void contextInitialized(ServletContextEvent event) {
-		RegistryEE.Application.get(event.getServletContext());
-	}
+  @Override
+  public void contextInitialized(ServletContextEvent event) {
+    RegistryEE.Application.get(event.getServletContext());
+  }
 
-	@Override
-	public void contextDestroyed(ServletContextEvent event) {
-		// Do nothing
-	}
+  @Override
+  public void contextDestroyed(ServletContextEvent event) {
+    // Do nothing
+  }
 
-	@Override
-	public void requestInitialized(ServletRequestEvent event) {
-		RegistryEE.Request.get(
-			event.getServletContext(),
-			event.getServletRequest()
-		);
-	}
+  @Override
+  public void requestInitialized(ServletRequestEvent event) {
+    RegistryEE.Request.get(
+      event.getServletContext(),
+      event.getServletRequest()
+    );
+  }
 
-	@Override
-	public void requestDestroyed(ServletRequestEvent event) {
-		// Do nothing
-	}
+  @Override
+  public void requestDestroyed(ServletRequestEvent event) {
+    // Do nothing
+  }
 
-	@Override
-	public void sessionCreated(HttpSessionEvent event) {
-		RegistryEE.Session.get(event.getSession());
-	}
+  @Override
+  public void sessionCreated(HttpSessionEvent event) {
+    RegistryEE.Session.get(event.getSession());
+  }
 
-	@Override
-	public void sessionDestroyed(HttpSessionEvent event) {
-		// Do nothing
-	}
+  @Override
+  public void sessionDestroyed(HttpSessionEvent event) {
+    // Do nothing
+  }
 }

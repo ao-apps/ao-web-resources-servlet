@@ -36,26 +36,26 @@ import javax.servlet.http.HttpServlet;
  */
 public class PageServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Creates the page-scope registry, if not already present, then invokes
-	 * {@link HttpServlet#service(javax.servlet.ServletRequest, javax.servlet.ServletResponse)}.
-	 * Any registry added by this method is removed before returning.
-	 */
-	@Override
-	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-		Registry oldPageRegistry = RegistryEE.Page.get(request);
-		if(oldPageRegistry == null) {
-			// Create a new page-scope registry
-			RegistryEE.Page.set(request, new Registry());
-		}
-		try {
-			super.service(request, response);
-		} finally {
-			if(oldPageRegistry == null) {
-				RegistryEE.Page.set(request, null);
-			}
-		}
-	}
+  /**
+   * Creates the page-scope registry, if not already present, then invokes
+   * {@link HttpServlet#service(javax.servlet.ServletRequest, javax.servlet.ServletResponse)}.
+   * Any registry added by this method is removed before returning.
+   */
+  @Override
+  public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+    Registry oldPageRegistry = RegistryEE.Page.get(request);
+    if (oldPageRegistry == null) {
+      // Create a new page-scope registry
+      RegistryEE.Page.set(request, new Registry());
+    }
+    try {
+      super.service(request, response);
+    } finally {
+      if (oldPageRegistry == null) {
+        RegistryEE.Page.set(request, null);
+      }
+    }
+  }
 }

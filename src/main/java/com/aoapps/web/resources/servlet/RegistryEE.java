@@ -36,128 +36,138 @@ import javax.servlet.http.HttpSession;
  */
 public final class RegistryEE {
 
-	/** Make no instances. */
-	private RegistryEE() {throw new AssertionError();}
+  /** Make no instances. */
+  private RegistryEE() {
+    throw new AssertionError();
+  }
 
-	/**
-	 * The application-scope {@linkplain Registry web resource registries} are always available.
-	 */
-	public static final class Application {
+  /**
+   * The application-scope {@linkplain Registry web resource registries} are always available.
+   */
+  public static final class Application {
 
-		/** Make no instances. */
-		private Application() {throw new AssertionError();}
+    /** Make no instances. */
+    private Application() {
+      throw new AssertionError();
+    }
 
-		/**
-		 * The name of the application-scope attribute that contains the current application registry.
-		 */
-		public static final ScopeEE.Application.Attribute<Registry> APPLICATION_ATTRIBUTE =
-			ScopeEE.APPLICATION.attribute(Application.class.getName());
+    /**
+     * The name of the application-scope attribute that contains the current application registry.
+     */
+    public static final ScopeEE.Application.Attribute<Registry> APPLICATION_ATTRIBUTE =
+      ScopeEE.APPLICATION.attribute(Application.class.getName());
 
-		/**
-		 * Gets the application-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletContext servlet context}.
-		 */
-		public static Registry get(ServletContext servletContext) {
-			return APPLICATION_ATTRIBUTE.context(servletContext).computeIfAbsent(__ -> new Registry());
-		}
-	}
+    /**
+     * Gets the application-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletContext servlet context}.
+     */
+    public static Registry get(ServletContext servletContext) {
+      return APPLICATION_ATTRIBUTE.context(servletContext).computeIfAbsent(__ -> new Registry());
+    }
+  }
 
-	/**
-	 * The request-scope {@linkplain Registry web resource registries} are always available.
-	 */
-	public static final class Request {
+  /**
+   * The request-scope {@linkplain Registry web resource registries} are always available.
+   */
+  public static final class Request {
 
-		/** Make no instances. */
-		private Request() {throw new AssertionError();}
+    /** Make no instances. */
+    private Request() {
+      throw new AssertionError();
+    }
 
-		/**
-		 * The name of the request-scope attribute that contains the current request registry.
-		 */
-		public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
-			ScopeEE.REQUEST.attribute(Request.class.getName());
+    /**
+     * The name of the request-scope attribute that contains the current request registry.
+     */
+    public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
+      ScopeEE.REQUEST.attribute(Request.class.getName());
 
-		/**
-		 * Gets the request-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
-		 * <p>
-		 * This defaults to a copy of {@link Application#get(javax.servlet.ServletContext)}.
-		 * </p>
-		 */
-		public static Registry get(ServletContext servletContext, ServletRequest request) {
-			return REQUEST_ATTRIBUTE.context(request).computeIfAbsent(__ -> Application.get(servletContext).copy());
-		}
-	}
+    /**
+     * Gets the request-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
+     * <p>
+     * This defaults to a copy of {@link Application#get(javax.servlet.ServletContext)}.
+     * </p>
+     */
+    public static Registry get(ServletContext servletContext, ServletRequest request) {
+      return REQUEST_ATTRIBUTE.context(request).computeIfAbsent(__ -> Application.get(servletContext).copy());
+    }
+  }
 
-	/**
-	 * The session-scope {@linkplain Registry web resource registries} are only available
-	 * when a session has been created and is active.
-	 */
-	public static final class Session {
+  /**
+   * The session-scope {@linkplain Registry web resource registries} are only available
+   * when a session has been created and is active.
+   */
+  public static final class Session {
 
-		/** Make no instances. */
-		private Session() {throw new AssertionError();}
+    /** Make no instances. */
+    private Session() {
+      throw new AssertionError();
+    }
 
-		/**
-		 * The name of the session-scope attribute that contains the current session registry.
-		 */
-		public static final ScopeEE.Session.Attribute<Registry> SESSION_ATTRIBUTE =
-			ScopeEE.SESSION.attribute(Session.class.getName());
+    /**
+     * The name of the session-scope attribute that contains the current session registry.
+     */
+    public static final ScopeEE.Session.Attribute<Registry> SESSION_ATTRIBUTE =
+      ScopeEE.SESSION.attribute(Session.class.getName());
 
-		/**
-		 * Gets the session-scope {@linkplain Registry web resource registry} for the given {@linkplain HttpSession session}.
-		 * <p>
-		 * Note: With the current implementation, the session registry may add to the request registry, but cannot remove from it
-		 * or suppress anything in it.
-		 * </p>
-		 * <p>
-		 * TODO: Is the session registry meaningful?  The idea is that it could be used for per-person theme selection via sessions.
-		 * </p>
-		 *
-		 * @return  The registry or {@code null} when {@code session == null}.
-		 */
-		public static Registry get(HttpSession session) {
-			if(session == null) {
-				return null;
-			} else {
-				return SESSION_ATTRIBUTE.context(session).computeIfAbsent(__ -> new Registry());
-			}
-		}
-	}
+    /**
+     * Gets the session-scope {@linkplain Registry web resource registry} for the given {@linkplain HttpSession session}.
+     * <p>
+     * Note: With the current implementation, the session registry may add to the request registry, but cannot remove from it
+     * or suppress anything in it.
+     * </p>
+     * <p>
+     * TODO: Is the session registry meaningful?  The idea is that it could be used for per-person theme selection via sessions.
+     * </p>
+     *
+     * @return  The registry or {@code null} when {@code session == null}.
+     */
+    public static Registry get(HttpSession session) {
+      if (session == null) {
+        return null;
+      } else {
+        return SESSION_ATTRIBUTE.context(session).computeIfAbsent(__ -> new Registry());
+      }
+    }
+  }
 
-	/**
-	 * Page-scope {@linkplain Registry web resource registries} are not always
-	 * available.  Their availability depends on the registry having been set
-	 * by the application or framework.
-	 * <p>
-	 * We have integrated this into our frameworks and tools, and this should
-	 * be easily added to additional frameworks.  In a framework where the
-	 * request and page are the same, it would be sufficient to unconditionally
-	 * add a page-scope registry via a {@link ServletRequestListener}.
-	 * </p>
-	 */
-	public static final class Page {
+  /**
+   * Page-scope {@linkplain Registry web resource registries} are not always
+   * available.  Their availability depends on the registry having been set
+   * by the application or framework.
+   * <p>
+   * We have integrated this into our frameworks and tools, and this should
+   * be easily added to additional frameworks.  In a framework where the
+   * request and page are the same, it would be sufficient to unconditionally
+   * add a page-scope registry via a {@link ServletRequestListener}.
+   * </p>
+   */
+  public static final class Page {
 
-		/** Make no instances. */
-		private Page() {throw new AssertionError();}
+    /** Make no instances. */
+    private Page() {
+      throw new AssertionError();
+    }
 
-		/**
-		 * The name of the request-scope attribute that contains the current page context.
-		 */
-		public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
-			ScopeEE.REQUEST.attribute(Page.class.getName());
+    /**
+     * The name of the request-scope attribute that contains the current page context.
+     */
+    public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
+      ScopeEE.REQUEST.attribute(Page.class.getName());
 
-		/**
-		 * Gets the page-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
-		 *
-		 * @return  The registry or {@code null} of there is not any current page-scope registry.
-		 */
-		public static Registry get(ServletRequest request) {
-			return REQUEST_ATTRIBUTE.context(request).get();
-		}
+    /**
+     * Gets the page-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
+     *
+     * @return  The registry or {@code null} of there is not any current page-scope registry.
+     */
+    public static Registry get(ServletRequest request) {
+      return REQUEST_ATTRIBUTE.context(request).get();
+    }
 
-		/**
-		 * Sets the page-scope {@linkplain Registry web resource registry} in the given {@linkplain ServletRequest servlet request}.
-		 */
-		public static void set(ServletRequest request, Registry pageRegistry) {
-			REQUEST_ATTRIBUTE.context(request).set(pageRegistry);
-		}
-	}
+    /**
+     * Sets the page-scope {@linkplain Registry web resource registry} in the given {@linkplain ServletRequest servlet request}.
+     */
+    public static void set(ServletRequest request, Registry pageRegistry) {
+      REQUEST_ATTRIBUTE.context(request).set(pageRegistry);
+    }
+  }
 }
