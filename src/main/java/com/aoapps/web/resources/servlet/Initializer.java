@@ -33,9 +33,9 @@ import javax.servlet.http.HttpSessionListener;
 
 @WebListener
 public class Initializer implements
-  ServletContextListener,
-  ServletRequestListener,
-  HttpSessionListener
+    ServletContextListener,
+    ServletRequestListener,
+    HttpSessionListener
 {
 
   @Override
@@ -51,8 +51,8 @@ public class Initializer implements
   @Override
   public void requestInitialized(ServletRequestEvent event) {
     RegistryEE.Request.get(
-      event.getServletContext(),
-      event.getServletRequest()
+        event.getServletContext(),
+        event.getServletRequest()
     );
   }
 

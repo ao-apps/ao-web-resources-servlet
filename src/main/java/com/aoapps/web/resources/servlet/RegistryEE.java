@@ -55,7 +55,7 @@ public final class RegistryEE {
      * The name of the application-scope attribute that contains the current application registry.
      */
     public static final ScopeEE.Application.Attribute<Registry> APPLICATION_ATTRIBUTE =
-      ScopeEE.APPLICATION.attribute(Application.class.getName());
+        ScopeEE.APPLICATION.attribute(Application.class.getName());
 
     /**
      * Gets the application-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletContext servlet context}.
@@ -79,7 +79,7 @@ public final class RegistryEE {
      * The name of the request-scope attribute that contains the current request registry.
      */
     public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
-      ScopeEE.REQUEST.attribute(Request.class.getName());
+        ScopeEE.REQUEST.attribute(Request.class.getName());
 
     /**
      * Gets the request-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
@@ -107,7 +107,7 @@ public final class RegistryEE {
      * The name of the session-scope attribute that contains the current session registry.
      */
     public static final ScopeEE.Session.Attribute<Registry> SESSION_ATTRIBUTE =
-      ScopeEE.SESSION.attribute(Session.class.getName());
+        ScopeEE.SESSION.attribute(Session.class.getName());
 
     /**
      * Gets the session-scope {@linkplain Registry web resource registry} for the given {@linkplain HttpSession session}.
@@ -152,7 +152,7 @@ public final class RegistryEE {
      * The name of the request-scope attribute that contains the current page context.
      */
     public static final ScopeEE.Request.Attribute<Registry> REQUEST_ATTRIBUTE =
-      ScopeEE.REQUEST.attribute(Page.class.getName());
+        ScopeEE.REQUEST.attribute(Page.class.getName());
 
     /**
      * Gets the page-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
