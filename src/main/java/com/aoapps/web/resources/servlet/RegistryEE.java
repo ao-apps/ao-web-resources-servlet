@@ -61,7 +61,7 @@ public final class RegistryEE {
      * Gets the application-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletContext servlet context}.
      */
     public static Registry get(ServletContext servletContext) {
-      return APPLICATION_ATTRIBUTE.context(servletContext).computeIfAbsent(__ -> new Registry());
+      return APPLICATION_ATTRIBUTE.context(servletContext).computeIfAbsent(name -> new Registry());
     }
   }
 
@@ -88,7 +88,7 @@ public final class RegistryEE {
      * </p>
      */
     public static Registry get(ServletContext servletContext, ServletRequest request) {
-      return REQUEST_ATTRIBUTE.context(request).computeIfAbsent(__ -> Application.get(servletContext).copy());
+      return REQUEST_ATTRIBUTE.context(request).computeIfAbsent(name -> Application.get(servletContext).copy());
     }
   }
 
@@ -125,7 +125,7 @@ public final class RegistryEE {
       if (session == null) {
         return null;
       } else {
-        return SESSION_ATTRIBUTE.context(session).computeIfAbsent(__ -> new Registry());
+        return SESSION_ATTRIBUTE.context(session).computeIfAbsent(name -> new Registry());
       }
     }
   }

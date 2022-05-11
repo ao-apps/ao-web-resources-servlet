@@ -31,12 +31,14 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+/**
+ * Initializes {@link RegistryEE}.
+ */
 @WebListener
 public class Initializer implements
     ServletContextListener,
     ServletRequestListener,
-    HttpSessionListener
-{
+    HttpSessionListener {
 
   @Override
   public void contextInitialized(ServletContextEvent event) {
