@@ -28,4 +28,4 @@ module com.aoapps.web.resources.servlet {
   requires javax.servlet.api; // <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
   // Transitive
   requires com.aoapps.lang; // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
-} // TODO: Avoiding rewrite-maven-plugin-4.22.2 truncation
+}
