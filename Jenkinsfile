@@ -31,6 +31,7 @@ def upstreamProjects = [
   '../parent', // <groupId>com.aoapps</groupId><artifactId>ao-oss-parent</artifactId>
 
   // Direct
+  '../lang', // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
   '../servlet-util', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
   'registry', // <groupId>com.aoapps</groupId><artifactId>ao-web-resources-registry</artifactId>
   // No Jenkins: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
