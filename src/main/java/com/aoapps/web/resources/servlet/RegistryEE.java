@@ -1,6 +1,6 @@
 /*
  * ao-web-resources-servlet - Web resource management in a Servlet environment.
- * Copyright (C) 2020, 2021, 2022, 2023  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022, 2023, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -85,9 +85,8 @@ public final class RegistryEE {
 
     /**
      * Gets the request-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
-     * <p>
-     * This defaults to a copy of {@link Application#get(javax.servlet.ServletContext)}.
-     * </p>
+     *
+     * <p>This defaults to a copy of {@link Application#get(javax.servlet.ServletContext)}.</p>
      */
     public static Registry get(ServletContext servletContext, ServletRequest request) {
       return REQUEST_ATTRIBUTE.context(request).computeIfAbsent(name -> Application.get(servletContext).copy());
@@ -113,13 +112,11 @@ public final class RegistryEE {
 
     /**
      * Gets the session-scope {@linkplain Registry web resource registry} for the given {@linkplain HttpSession session}.
-     * <p>
-     * Note: With the current implementation, the session registry may add to the request registry, but cannot remove from it
-     * or suppress anything in it.
-     * </p>
-     * <p>
-     * TODO: Is the session registry meaningful?  The idea is that it could be used for per-person theme selection via sessions.
-     * </p>
+     *
+     * <p>Note: With the current implementation, the session registry may add to the request registry, but cannot remove from it
+     * or suppress anything in it.</p>
+     *
+     * <p>TODO: Is the session registry meaningful?  The idea is that it could be used for per-person theme selection via sessions.</p>
      *
      * @return  The registry or {@code null} when {@code session == null}.
      */
@@ -136,12 +133,11 @@ public final class RegistryEE {
    * Page-scope {@linkplain Registry web resource registries} are not always
    * available.  Their availability depends on the registry having been set
    * by the application or framework.
-   * <p>
-   * We have integrated this into our frameworks and tools, and this should
+   *
+   * <p>We have integrated this into our frameworks and tools, and this should
    * be easily added to additional frameworks.  In a framework where the
    * request and page are the same, it would be sufficient to unconditionally
-   * add a page-scope registry via a {@link ServletRequestListener}.
-   * </p>
+   * add a page-scope registry via a {@link ServletRequestListener}.</p>
    */
   @SuppressFBWarnings("PI_DO_NOT_REUSE_PUBLIC_IDENTIFIERS_CLASS_NAMES")
   public static final class Page {
