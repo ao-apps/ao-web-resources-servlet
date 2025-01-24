@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ao-web-resources-servlet - Web resource management in a Servlet environment.
+Copyright (C) 2025  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of ao-web-resources-servlet.
+
+ao-web-resources-servlet is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ao-web-resources-servlet is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with ao-web-resources-servlet.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<ruleset
+  comparisonMethod="maven"
+  xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 https://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd"
+>
+  <rules>
+    <!-- Java 1.8: Stay on spotbugs-annotations-4.8.6 since spotbugs-annotations-4.9.0 requires JDK >= 11 -->
+    <rule groupId="com.github.spotbugs" comparisonMethod="spotbugs-annotations">
+      <ignoreVersions><ignoreVersion type="regex">.*</ignoreVersion></ignoreVersions>
+    </rule>
+  </rules>
+</ruleset>
