@@ -1,6 +1,6 @@
 /*
  * ao-web-resources-servlet - Web resource management in a Servlet environment.
- * Copyright (C) 2020, 2021, 2022, 2023, 2024  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022, 2023, 2024, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,7 +25,6 @@ package com.aoapps.web.resources.servlet;
 
 import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.web.resources.registry.Registry;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestListener;
@@ -69,7 +68,6 @@ public final class RegistryEE {
   /**
    * The request-scope {@linkplain Registry web resource registries} are always available.
    */
-  @SuppressFBWarnings("PI_DO_NOT_REUSE_PUBLIC_IDENTIFIERS_CLASS_NAMES")
   public static final class Request {
 
     /** Make no instances. */
@@ -139,7 +137,6 @@ public final class RegistryEE {
    * request and page are the same, it would be sufficient to unconditionally
    * add a page-scope registry via a {@link ServletRequestListener}.</p>
    */
-  @SuppressFBWarnings("PI_DO_NOT_REUSE_PUBLIC_IDENTIFIERS_CLASS_NAMES")
   public static final class Page {
 
     /** Make no instances. */
