@@ -23,7 +23,7 @@ Web resource management in a Servlet environment.
 * [Project Home](https://oss.aoapps.com/web-resources/servlet/)
 * [Changelog](https://oss.aoapps.com/web-resources/servlet/changelog)
 * [API Docs](https://oss.aoapps.com/web-resources/servlet/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-web-resources-servlet)
+* [Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-web-resources-servlet)
 * [GitHub](https://github.com/ao-apps/ao-web-resources-servlet)
 
 ## Contact Us
