@@ -1,6 +1,6 @@
 /*
  * ao-web-resources-servlet - Web resource management in a Servlet environment.
- * Copyright (C) 2020, 2021, 2022, 2023, 2024, 2025  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022, 2023, 2024, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,10 +25,10 @@ package com.aoapps.web.resources.servlet;
 
 import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.web.resources.registry.Registry;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletRequestListener;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletRequestListener;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Provides {@linkplain Registry web resource registries} for {@link ServletContext},
@@ -84,7 +84,7 @@ public final class RegistryEE {
     /**
      * Gets the request-scope {@linkplain Registry web resource registry} for the given {@linkplain ServletRequest servlet request}.
      *
-     * <p>This defaults to a copy of {@link Application#get(javax.servlet.ServletContext)}.</p>
+     * <p>This defaults to a copy of {@link Application#get(jakarta.servlet.ServletContext)}.</p>
      */
     public static Registry get(ServletContext servletContext, ServletRequest request) {
       return REQUEST_ATTRIBUTE.context(request).computeIfAbsent(name -> Application.get(servletContext).copy());

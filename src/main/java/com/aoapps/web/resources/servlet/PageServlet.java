@@ -1,6 +1,6 @@
 /*
  * ao-web-resources-servlet - Web resource management in a Servlet environment.
- * Copyright (C) 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,11 +24,11 @@
 package com.aoapps.web.resources.servlet;
 
 import com.aoapps.web.resources.registry.Registry;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServlet;
 
 /**
  * A servlet that creates a {@link RegistryEE.Page page-scope web resource registry},
@@ -40,7 +40,7 @@ public class PageServlet extends HttpServlet {
 
   /**
    * Creates the page-scope registry, if not already present, then invokes
-   * {@link HttpServlet#service(javax.servlet.ServletRequest, javax.servlet.ServletResponse)}.
+   * {@link HttpServlet#service(jakarta.servlet.ServletRequest, jakarta.servlet.ServletResponse)}.
    * Any registry added by this method is removed before returning.
    */
   @Override
