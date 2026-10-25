@@ -21,10 +21,11 @@
  * along with ao-web-resources-servlet.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.aoapps.web.resources.servlet {
-  exports com.aoapps.web.resources.servlet;
   // Direct
   requires com.aoapps.lang; // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
   requires com.aoapps.servlet.util; // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
   requires com.aoapps.web.resources.registry; // <groupId>com.aoapps</groupId><artifactId>ao-web-resources-registry</artifactId>
   requires jakarta.servlet; // <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId>
+
+  exports com.aoapps.web.resources.servlet;
 }
